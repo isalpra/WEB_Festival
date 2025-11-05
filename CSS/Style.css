@@ -1,0 +1,236 @@
+:root {
+  --black: #000000;
+  --blue: #0028ff;
+  --white: #ffffff;
+  --header-h: clamp(64px, 4.2vh, 84px);
+  --max-content: 1400px;
+}
+
+/* ------------------ RESET ------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* VARIABLES */
+:root{
+  --black:#0b0b0b;
+  --ticker:#083bd6;
+  --accent:#00a2ff;
+  --white:#ffffff;
+  --header-h:clamp(60px, 8vh, 80px);
+  --ticker-h:clamp(50px, 6vh, 64px); /* más alta */
+  --max-content:1400px;
+}
+
+/* TIPOGRAFÍAS */
+body {
+  font-family: 'Moderniz', Arial, sans-serif;
+  line-height: 1.15;
+}
+
+.nav-links a {
+  font-family: 'Medieval Scroll of Wisdom', 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/* HEADER */
+.navbar {
+  width: 100%;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6vw;
+  height: var(--header-h);
+  position: relative;
+  z-index: 40;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.logo img {
+  display: block;
+  height: calc(var(--header-h) * 0.65);
+  width: auto;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(20px, 3vw, 40px);
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enlaces más pequeños y centrados */
+.nav-links li a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(12px, 1.2vw, 18px); /* tamaño reducido */
+  line-height: 1;
+  padding: 0.4rem 0;
+  transition: color .2s ease, transform .15s ease;
+  display: inline-block;
+}
+
+.nav-links li a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* TICKER */
+.ticker {
+  width: 100%;
+  background: var(--ticker);
+  color: var(--white);
+  overflow: hidden;
+  height: var(--ticker-h);
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 35;
+}
+
+.ticker p {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: clamp(13px, 1.5vw, 18px);
+  letter-spacing: .06em;
+  animation: ticker-scroll 60s linear infinite;
+}
+
+/* Duplicar el texto para efecto infinito sin cortes */
+.ticker p::after {
+  content: attr(data-text);
+  padding-left: 4rem; /* separación entre repeticiones */
+}
+
+/* Movimiento constante */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* HERO */
+.hero {
+  width: 100%;
+  min-height: calc(100vh - var(--header-h) - var(--ticker-h));
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .8s ease;
+}
+
+.hero:hover .hero-img {
+  transform: scale(1.03);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.25));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 5vw;
+  }
+  .nav-links li a {
+    font-size: clamp(11px, 1.8vw, 16px);
+  }
+  .ticker p {
+    animation-duration: 26s;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: .4rem;
+    height: auto;
+    padding: .8rem 0;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .nav-links li a {
+    font-size: 0.9rem;
+  }
+
+  .ticker {
+    height: calc(var(--ticker-h) * 0.9);
+  }
+
+  .ticker p {
+    font-size: 0.85rem;
+    animation-duration: 22s;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: .7rem;
+  }
+  .nav-links li a {
+    font-size: 0.8rem;
+  }
+  .logo img {
+    height: 42px;
+  }
+  .ticker p {
+    animation-duration: 20s;
+  }
+}
