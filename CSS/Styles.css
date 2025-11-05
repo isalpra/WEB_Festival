@@ -405,10 +405,93 @@ html, body {
 }
 
 .surprise {
-  text-align: center;
-  align-items: center;
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  height: 50vh;         
   font-size: 1.15rem;
+  text-align: center;
 }
+
+.spoty {
+  position: relative;
+  height: 50vh; 
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  overflow: hidden;
+}
+
+.spoty .fondo-roca {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: 0;
+}
+
+/* Recuadro blanco centrado */
+.spoty .contenido-blanco {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.95); 
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.3rem; 
+  max-width: 50%; 
+  height: 25vh;
+}
+
+/* Texto dentro del recuadro */
+.spoty .contenido-blanco h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--black);
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+/* Botón rojo */
+.spoty .contenido-blanco .boton-join {
+  display: inline-block;
+  background-color: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.spoty .contenido-blanco .boton-join:hover {
+  background-color: #5052ff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .spoty {
+    height: 50vh; /* más altura en tablet/móvil si se desea */
+  }
+
+  .spoty .contenido-blanco {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .spoty .contenido-blanco h3 {
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  }
+}
+
+
 
 .bands-gallery {
   display: grid;
