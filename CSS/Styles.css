@@ -17,14 +17,14 @@
 html, body {
   width: 100%;
   height: 100%;
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
   font-family: "Moderniz", sans-serif;
   overflow-x: hidden;
 }
 
 /* ===============================
-   NAVBAR
+   NAVBAR (FIJA Y NEGRA)
 ================================== */
 .navbar {
   width: 100%;
@@ -32,14 +32,16 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 0; /* un poco más alta que la azul */
-  position: relative;
-  z-index: 10;
+  padding: 28px 0; /* 🔹 más alta */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 /* LOGO */
 .logo img {
-  height: 45px; /* tamaño reducido */
+  height: 48px;
   position: absolute;
   left: 40px;
   top: 50%;
@@ -58,8 +60,8 @@ html, body {
 .nav-links a {
   color: var(--white);
   text-decoration: none;
-  font-family: "Medieval Scroll of Wisdom", cursive; /* fuente del modelo original */
-  font-size: 1.2rem;
+  font-family: "Medieval Scroll of Wisdom", cursive;
+  font-size: 1.3rem;
   letter-spacing: 1px;
   transition: color 0.3s ease;
 }
@@ -69,7 +71,7 @@ html, body {
 }
 
 /* ===============================
-   TICKER (barra azul animada)
+   TICKER (BARRA AZUL)
 ================================== */
 .ticker {
   width: 100%;
@@ -77,26 +79,27 @@ html, body {
   color: var(--white);
   white-space: nowrap;
   overflow: hidden;
-  position: relative;
-  height: 60px; /* más baja que la negra */
+  position: fixed; 
+  top: 84px; 
+  left: 0;
+  height: 65px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 5;
+  z-index: 999;
 }
 
+/* Texto en bucle infinito sin cortes */
 .ticker p {
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
-  padding-left: 100%;
-  animation: ticker-scroll 50s linear infinite;
+  padding-right: 100%; /* espacio para el bucle */
+  animation: ticker-scroll 80s linear infinite;
 }
 
-/* Animación constante (no cambia la velocidad con el tamaño de pantalla) */
 @keyframes ticker-scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ===============================
@@ -104,56 +107,100 @@ html, body {
 ================================== */
 .hero {
   width: 100%;
+  height: 100vh; /* 🔹 ocupa toda la pantalla */
   overflow: hidden;
   position: relative;
+  margin-top: 149px; /* 🔹 espacio total para no quedar debajo de barras */
 }
 
 .hero-img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 
 .hero-img:hover {
-  transform: scale(1.03); /* leve efecto hover */
+  transform: scale(1.03);
 }
+
+/* ===============================
+   INFO BACK SECTION (responsive)
+================================== */
+.infoback {
+  width: 100%;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  padding: 10vh 8vw; 
+  min-height: 90vh; 
+  box-sizing: border-box;
+}
+
+.white-block {
+  background-color: var(--white);
+  color: var(--black);
+  text-align: left; 
+  max-width: 90%; 
+}
+
+.white-block h1 {
+  font-family: "Moderniz", sans-serif;
+  font-size: clamp(2.5rem, 10vw, 9rem); 
+  line-height: 1;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 10vh 0; 
+  margin-left: 5%;
+}
+
 
 /* ===============================
    RESPONSIVE
 ================================== */
 @media (max-width: 900px) {
   .nav-links {
-    gap: 60px;
+    gap: 80px;
   }
 
   .logo img {
-    height: 40px;
+    height: 42px;
   }
 
-  .ticker p {
-    font-size: 1.1rem;
-    animation-duration: 22s;
+  .ticker {
+    top: 76px; /* ajusta posición según la barra */
+    height: 55px;
+  }
+
+  .hero {
+    margin-top: 131px;
   }
 }
 
 @media (max-width: 600px) {
   .nav-links {
-    gap: 35px;
+    gap: 40px;
   }
 
   .logo img {
-    height: 35px;
+    height: 36px;
   }
 
   .navbar {
-    padding: 18px 0;
+    padding: 20px 0;
   }
 
   .ticker {
-    height: 55px;
+    top: 70px;
+    height: 50px;
+  }
+
+  .hero {
+    margin-top: 120px;
   }
 
   .ticker p {
-    animation-duration: 22s;
+    font-size: 0.9rem;
   }
 }
