@@ -1,7 +1,8 @@
 :root {
   --black: #000000;
-  --blue: #0028ff;
+  --blue: #0C27B1;
   --white: #ffffff;
+  --change: #787C8D;
   --header-h: clamp(64px, 4.2vh, 84px);
   --max-content: 1400px;
 }
@@ -49,7 +50,7 @@ html, body {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 90px;
+  gap: 160px;
   justify-content: center;
   align-items: center;
 }
@@ -58,13 +59,13 @@ html, body {
   color: var(--white);
   text-decoration: none;
   font-family: "Medieval Scroll of Wisdom", cursive; /* fuente del modelo original */
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   letter-spacing: 1px;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--blue);
+  color: var(--change);
 }
 
 /* ===============================
@@ -86,10 +87,10 @@ html, body {
 
 .ticker p {
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   padding-left: 100%;
-  animation: ticker-scroll 22s linear infinite;
+  animation: ticker-scroll 50s linear infinite;
 }
 
 /* Animación constante (no cambia la velocidad con el tamaño de pantalla) */
