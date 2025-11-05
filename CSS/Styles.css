@@ -392,6 +392,81 @@ html, body {
   transition: all 0.2s ease;
 }
 
+/* BANDS  */
+
+.blue-bands {
+  width: 100%;
+  background-color: var(--blue);
+  color: var(--white);
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 0.8rem;
+}
+
+.bands-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem; /* espacio entre cajas */
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.band-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.band-card img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.band-card img:hover {
+  filter: grayscale(100%) brightness(110%);
+  transform: scale(1.03);
+}
+
+.band-name {
+  margin-top: 2rem; /* espacio entre imagen y texto */
+  font-size: 1.2rem;
+  color: var(--black);
+  font-family: "Moderniz", sans-serif;
+  font-weight: 600;
+}
+
+/* ======= Responsive ======= */
+@media (max-width: 900px) {
+  .bands-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .band-name {
+    font-size: 1.1rem;
+    margin-top: 1.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .bands-gallery {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .band-name {
+    font-size: 1.1rem;
+    margin-top: 1.8rem;
+  }
+}
+
+
 /* 🔹 Responsive */
 @media (max-width: 900px) {
   .footer-content {
