@@ -168,17 +168,21 @@ html, body {
 }
 
 .lugar h2 {
-  font-family: "Medieval Scroll of Wisdom",cursive;
-  font-size: clamp(3rem, 7vw, 5rem);
+  font-family: "Medieval Scroll of Wisdom", cursive;
+  font-size: clamp(2.3rem, 8vw, 6rem);
   color: #0C27B1;
-  letter-spacing: 2px;
+  letter-spacing: clamp(1px, 0.5vw, 4px); 
   margin-bottom: 3vh;
-  text-align:center;
+  text-align: center;
+  width: 100%;
+  line-height: 1.1;
 }
+
 
 .lugar > div {
   width: 100%;
 }
+
 
 .left, .right {
   display: flex;
@@ -188,6 +192,7 @@ html, body {
   font-size: clamp(0.9rem, 2vw, 1.2rem);
 }
 
+/* distribución horizontal */
 .lugar .left {
   float: left;
   width: 48%;
@@ -199,6 +204,7 @@ html, body {
   text-align: right;
 }
 
+/* dirección del lugar */
 .utretch {
   clear: both;
   text-align: center;
@@ -209,12 +215,82 @@ html, body {
   opacity: 0.9;
 }
 
+.brickwall {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15vh 12vw;
+  overflow: hidden;
+  color: var(--white);
+  text-align: center;
+}
+
+.imagenbrick {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔹 asegura que cubra todo el espacio del texto */
+  filter: brightness(40%); /* 🔹 oscurece la imagen para mejor legibilidad */
+  z-index: 0;
+}
+
+.brickwall-text {
+  position: relative;
+  z-index: 1; /* 🔹 texto por encima de la imagen */
+  max-width: 1000px;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-family: "Moderniz", sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
+.brickwall-text p {
+  margin-bottom: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .brickwall {
+    padding: 12vh 8vw;
+  }
+
+  .brickwall-text {
+    font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  }
+
+  .brickwall-text p {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .brickwall {
+    padding: 10vh 6vw;
+  }
+
+  .brickwall-text {
+    font-size: clamp(0.9rem, 3vw, 1.05rem);
+  }
+
+  .brickwall-text p {
+    margin-bottom: 2.5rem;
+  }
+}
+
 /* ===============================
    RESPONSIVE
 ================================== */
 @media (max-width: 900px) {
   .lugar {
     padding: 6vh 6%;
+  }
+
+  .lugar h2 {
+    font-size: clamp(2rem, 10vw, 4rem); /* 🔹 escala perfecta en tablet y móvil */
+    text-align: center;
   }
 
   .lugar .left, 
@@ -232,7 +308,6 @@ html, body {
     margin-top: 3rem;
   }
 }
-
 
 /* ===============================
    RESPONSIVE
