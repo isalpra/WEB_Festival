@@ -413,7 +413,21 @@ html, body {
   }
 }
 
+@media (max-width: 900px) {
+  .footer-right {
+    text-align: center !important;
+    margin: 2rem 0;
+  }
 
+  .social-icons {
+    justify-content: center !important;
+  }
+
+  .useful-btn {
+    margin: 1rem auto; /* centra el botón */
+    display: block;
+  }
+}
 
 /* Responsive */
 @media (max-width: 900px) {
