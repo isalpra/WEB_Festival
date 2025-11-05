@@ -1,0 +1,158 @@
+:root {
+  --black: #000000;
+  --blue: #0028ff;
+  --white: #ffffff;
+  --header-h: clamp(64px, 4.2vh, 84px);
+  --max-content: 1400px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--black);
+  color: var(--white);
+  font-family: "Moderniz", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   NAVBAR
+================================== */
+.navbar {
+  width: 100%;
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0; /* un poco más alta que la azul */
+  position: relative;
+  z-index: 10;
+}
+
+/* LOGO */
+.logo img {
+  height: 45px; /* tamaño reducido */
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* NAV LINKS */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 90px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-family: "Medieval Scroll of Wisdom", cursive; /* fuente del modelo original */
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--blue);
+}
+
+/* ===============================
+   TICKER (barra azul animada)
+================================== */
+.ticker {
+  width: 100%;
+  background-color: var(--blue);
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  height: 60px; /* más baja que la negra */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.ticker p {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-left: 100%;
+  animation: ticker-scroll 22s linear infinite;
+}
+
+/* Animación constante (no cambia la velocidad con el tamaño de pantalla) */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ===============================
+   HERO SECTION
+================================== */
+.hero {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.hero-img:hover {
+  transform: scale(1.03); /* leve efecto hover */
+}
+
+/* ===============================
+   RESPONSIVE
+================================== */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 60px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .ticker p {
+    font-size: 1.1rem;
+    animation-duration: 22s;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    gap: 35px;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .navbar {
+    padding: 18px 0;
+  }
+
+  .ticker {
+    height: 55px;
+  }
+
+  .ticker p {
+    animation-duration: 22s;
+  }
+}
