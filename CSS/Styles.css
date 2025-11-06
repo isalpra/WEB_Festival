@@ -883,7 +883,7 @@ html, body {
 
 .tickets-wrapper{
   max-width: 920px;
-  margin: 100px auto; /* sitúa debajo de tu navbar fija */
+  margin: 70px auto; /* sitúa debajo de tu navbar fija */
   padding: 28px;
   display: grid;
   grid-template-columns: 1fr;
@@ -1067,6 +1067,7 @@ html, body {
   cursor:pointer;
   transition: background-color 0.3s 
   ease, transform 0.2s ease;
+  margin-bottom: 7rem;
 }
 
 .continue-btn:hover{
