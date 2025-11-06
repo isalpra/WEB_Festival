@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Comeback</title>
+  <link rel="stylesheet" href="CSS/Styles.css" />
+  <!-- Tipografías -->
+  <link href="https://fonts.cdnfonts.com/css/moderniz" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/medieval-scroll-of-wisdom" rel="stylesheet">
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+  <link rel="stylesheet" href="CSS/Styles.css">
+
+
+</head>
+<body>
+<header class="navbar">
+    <div class="logo"> 
+      <img src="IMG/TheComebacklogo.png" alt="The Comeback Logo">
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="tickets.html">TICKETS</a></li>
+        <li><a href="bands.html">BANDS</a></li>
+        <li><a href="info.html">INFO</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<section class="info-section">
+  <div class="blue-bands">
+    <h3>you are ready to pay</h3>
+  </div>  
+</section>
+
+    <main class="tickets-wrapper">
+    <header class="tickets-header">
+      <p>THE LEGENDS ARE BACK ON STAGE!</p>
+      <p class="sub">THE LEGENDS ARE BACK ON STAGE. SELECT YOUR TICKET AND DON'T MISS THE CHANCE</p>
+    </header>
+
+    <section class="tickets-list">
+      <!-- NORMAL -->
+      <article class="ticket ticket-red" data-type="normal">
+        <div class="ticket-left">
+          <div class="ticket-title">NORMAL TICKET</div>
+          <div class="ticket-date">13, 14 &amp; 15 NOV 2026</div>
+        </div>
+
+        <div class="ticket-center">
+          <div class="controls">
+            <button class="ctrl-btn" onclick="updateTickets('normal', -1)">−</button>
+            <div id="normal-count" class="count">0</div>
+            <button class="ctrl-btn" onclick="updateTickets('normal', 1)">+</button>
+          </div>
+        </div>
+
+        <div class="ticket-right">
+          <div class="price">140 €</div>
+        </div>
+      </article>
+
+      <!-- SILVER -->
+      <article class="ticket ticket-silver" data-type="silver">
+        <div class="ticket-left">
+          <div class="ticket-title">SILVER TICKET</div>
+          <div class="ticket-date">13, 14 &amp; 15 NOV 2026</div>
+        </div>
+
+        <div class="ticket-center">
+          <div class="controls">
+            <button class="ctrl-btn" onclick="updateTickets('silver', -1)">−</button>
+            <div id="silver-count" class="count">0</div>
+            <button class="ctrl-btn" onclick="updateTickets('silver', 1)">+</button>
+          </div>
+        </div>
+
+        <div class="ticket-right">
+          <div class="price">215 €</div>
+        </div>
+      </article>
+
+      <!-- MINOR -->
+      <article class="ticket ticket-blue" data-type="minor">
+        <div class="ticket-left">
+          <div class="ticket-title">MINOR TICKET</div>
+          <div class="ticket-date"><small>KIDS UNDER 16</small></div>
+        </div>
+
+        <div class="ticket-center">
+          <div class="controls">
+            <button class="ctrl-btn" onclick="updateTickets('minor', -1)">−</button>
+            <div id="minor-count" class="count">0</div>
+            <button class="ctrl-btn" onclick="updateTickets('minor', 1)">+</button>
+          </div>
+        </div>
+
+        <div class="ticket-right">
+          <div class="price">95 €</div>
+        </div>
+      </article>
+    </section>
+
+    <div class="total-wrap">
+      <div class="total-box">
+        <div class="total-label">TOTAL</div>
+        <div id="total" class="total-value">430€</div>
+      </div>
+
+      <button class="continue-btn">CONTINUAR</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+  

@@ -714,24 +714,30 @@ html, body {
   height:10rem;
 }
 
-/* TRANSPORTS */
+/* =======================
+   TRANSPORTS (Base)
+======================= */
 
 .transport-section {
   padding: 10rem 10vw;
 }
 
-
 .info-box h2 {
-  color:#0C27B1;
+  color: #0C27B1;
   margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* 🔹 escala con pantalla */
 }
 
+.info-box p {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  line-height: 1.6;
+}
 
 /* --- Parte superior: mapa + texto --- */
 .transport-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch; /* 🔹 iguala alturas */
   gap: 5rem;
   flex-wrap: wrap;
   margin-bottom: 4rem;
@@ -741,12 +747,15 @@ html, body {
 .map-box {
   flex: 1;
   min-width: 300px;
+  display: flex;
+  justify-content: left; /* 🔹 centra la imagen horizontalmente */
+  align-items: center;
 }
 
 .map-box img {
   width: 80%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
   border-radius: 10px;
 }
 
@@ -756,7 +765,7 @@ html, body {
   min-width: 300px;
   border: 2px solid black;
   border-radius: 10px;
-  padding: 1.5rem 2rem;
+  padding: 2rem 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -777,7 +786,7 @@ html, body {
   min-width: 280px;
   border: 2px solid black;
   border-radius: 10px;
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -785,33 +794,429 @@ html, body {
 }
 
 .transport-card h3 {
-  color: var(--blue);        
-  text-align: center;       
-  margin-bottom: 1rem;     
+  color: var(--blue);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
 }
 
-/* --- Responsivo --- */
+.transport-card p {
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  line-height: 1.6;
+}
+
+/* SLEEP */
+
+/* =======================
+   EXTRA TRANSPORT BOXES
+======================= */
+
+.transport-extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15rem;
+  padding: 6rem 10vw;
+  flex-wrap: wrap;
+}
+
+/* Caja individual */
+.extra-box {
+  flex: 1;
+  min-width: 320px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.extra-box:hover {
+  transform: scale(1.02);
+}
+
+/* Título azul */
+.extra-box h2 {
+  color: #0C27B1;
+  font-family: 'Moderniz', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Botón */
+.extra-btn {
+  display: inline-block;
+  background-color: var(--black); /* rojo principal */
+  color: white;
+  font-family: 'Moderniz', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 35px;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.extra-btn:hover {
+  background-color: #000c3f;
+  transform: scale(1.05);
+}
+
+/* Imagen */
+.extra-box img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* TICKETS  */
+
+
+.tickets-wrapper{
+  max-width: 920px;
+  margin: 100px auto; /* sitúa debajo de tu navbar fija */
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px; /* Aumentado: más espacio entre secciones */
+}
+
+/* Header */
+.tickets-header{
+  text-align: center;
+  padding: 6px 12px 0 12px;
+}
+
+.tickets-header h1{
+  font-size: clamp(20px, 3.4vw, 36px);
+  letter-spacing: 2px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tickets-header .sub{
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-weight:700;
+}
+
+/* Lista de tickets */
+.tickets-list{
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* Aumentado: más separación entre tickets */
+  align-items: center;
+}
+
+/* Cada tarjeta */
+.ticket{
+  width: min(720px, 100%);
+  border: 3px solid var(--black);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto 120px;
+  align-items: center;
+  padding: 18px 22px;
+  box-sizing: border-box;
+  transition: transform .18s ease;
+}
+
+/* Hover ligero */
+.ticket:hover { transform: translateY(-3px); }
+
+/* Left block: título / fecha */
+.ticket-left {
+  display:flex;
+  flex-direction: column;
+  gap:6px;
+  text-align: left;
+}
+
+.ticket-title{
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ticket-date{
+  font-weight: 700;
+  opacity: .95;
+  font-size: .9rem;
+}
+
+/* Center: controles */
+.ticket-center {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Right: precio */
+.ticket-right {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+
+.price{
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+/* Colores */
+.ticket-red { background: #8b0000; color: #fff; }
+.ticket-silver { background: #d9d9d9; color: #000; }
+.ticket-blue { background: #0015c6; color: #fff; }
+
+/* Controles: botones */
+.controls{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.ctrl-btn{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:2px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  font-size:18px;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition: background .12s ease, color .12s ease, transform .12s ease;
+}
+
+.ctrl-btn:hover{
+  background: var(--black);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Contador */
+.count{
+  min-width:30px;
+  text-align:center;
+  font-weight:900;
+  font-size:1rem;
+  background: transparent;
+  padding: 4px 2px;
+}
+
+/* TOTAL area */
+.total-wrap{
+  width: min(720px,100%);
+  margin: 2rem auto 0 auto; /* Añadido margen superior */
+  display:flex;
+  flex-direction: column;
+  gap:20px; /* Aumentado espacio entre caja total y botón */
+  align-items:center;
+}
+
+/* caja total */
+.total-box{
+  width:100%;
+  border: 3px solid var(--black);
+  border-radius: 12px;
+  padding: 14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: var(--white);
+  font-weight:900;
+  font-size:1.1rem;
+}
+
+.total-value{
+  font-size:1.5rem;
+  font-weight:900;
+}
+
+/* animación cuando cambia el total */
+.total-box.updated{
+  transform: scale(1.04);
+  transition: transform .18s ease;
+}
+
+/* Botón continuar */
+.continue-btn{
+  width: 240px;
+  background: var(--black);
+  color: var(--white);
+  border: 3px solid var(--black);
+  padding: 12px 20px;
+  border-radius: 28px;
+  font-weight:900;
+  font-family: "Moderniz", sans-serif;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition: background-color 0.3s 
+  ease, transform 0.2s ease;
+}
+
+.continue-btn:hover{
+  background-color: #000c3f;
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 720px){
+  .ticket{
+    grid-template-columns: 1fr;
+    gap: 12px;
+    text-align: center;
+  }
+  .ticket-left { align-items:center; }
+  .ticket-right { justify-content:center; }
+  .controls { justify-content:center; }
+  .total-wrap { padding: 0 10px; }
+  .continue-btn{ width:100%; }
+}
+
+
+
+/* =======================
+   RESPONSIVE DESIGN
+======================= */
+
+/* Pantallas medianas (tablets) */
 @media (max-width: 900px) {
+  .transport-extra {
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 6vw;
+  }
+
+  .extra-box {
+    width: 90%;
+  }
+
+  .extra-btn {
+    width: 70%;
+  }
+}
+
+/* Pantallas pequeñas (móvil) */
+@media (max-width: 600px) {
+  .transport-extra {
+    padding: 4rem 5vw;
+  }
+
+  .extra-box {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .extra-btn {
+    width: 80%;
+    padding: 0.9rem 0;
+  }
+
+  .extra-box img {
+    height: 220px;
+  }
+}
+
+
+
+
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+/* Tablets (hasta 900px) */
+@media (max-width: 900px) {
+  .transport-section {
+    padding: 6rem 6vw;
+  }
+
   .transport-top {
     flex-direction: column;
     align-items: center;
+    gap: 3rem;
   }
 
-  .map-box,
+  .map-box img {
+    width: 90%;
+    height: auto;
+  }
+
   .info-box {
-    width: 100%;
+    width: 90%;
+    padding: 1.8rem 2rem;
+    text-align: center;
+  }
+
+  .info-box h2 {
+    font-size: 1.6rem;
+  }
+
+  .info-box p {
+    font-size: 1rem;
   }
 
   .transport-bottom {
     flex-direction: column;
-    align-items: center;
+    gap: 2rem;
+  }
+
+  .transport-card {
+    width: 90%;
+  }
+}
+
+/* Móviles (hasta 600px) */
+@media (max-width: 600px) {
+  .transport-section {
+    padding: 5rem 5vw;
+  }
+
+  .map-box img {
+    width: 100%;
+  }
+
+  .info-box {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .info-box h2 {
+    font-size: 1.4rem;
+  }
+
+  .info-box p {
+    font-size: 0.9rem;
   }
 
   .transport-card {
     width: 100%;
+    padding: 1.5rem;
+  }
+
+  .transport-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .transport-card p {
+    font-size: 0.9rem;
   }
 }
-
 
 
 /* ===========================
