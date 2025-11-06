@@ -107,10 +107,10 @@ html, body {
 ================================== */
 .hero {
   width: 100%;
-  height: 100vh; /* 🔹 ocupa toda la pantalla */
+  height: 100vh; 
   overflow: hidden;
   position: relative;
-  margin-top: 149px; /* 🔹 espacio total para no quedar debajo de barras */
+  margin-top: 149px; 
 }
 
 .hero-img {
@@ -527,6 +527,121 @@ html, body {
   font-family: "Moderniz", sans-serif;
   font-weight: 600;
 }
+
+
+/* INFO  */
+
+/* Blue band encima del fondo */
+.info-section .blue-bands {
+  width: 100%;
+  background-color: var(--blue);
+  color: var(--white);
+  text-align: center;
+  padding: 3rem 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  z-index: 2;
+  position: relative;
+}
+
+/* Contenedor de fondo fijo */
+.info-fondo-container {
+  position: fixed; /* fijo en pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* ocupa toda la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+/* Imagen de fondo */
+.info-fondo-container .info-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Contenido centrado exacto */
+.info-fondo-container .info-contenido {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* justo en el centro de la pantalla */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 60%;
+  max-width: 600px;
+  z-index: 1;
+}
+
+/* Botones rojos grandes */
+.info-btn {
+  display: inline-block;
+  background-color: #780000;
+  color: #fff;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  text-align: center;
+  width: 90%;
+  max-width: 300px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.info-btn:hover {
+  background-color: #df3c3c;
+  transform: scale(1.02);
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 900px) {
+  .info-contenido {
+    width: 70%;
+    gap: 2rem;
+  }
+
+  .info-btn {
+    padding: 0.8rem 2rem;
+    max-width: 250px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+
+  .blue-bands {
+    padding: 2.5rem 0;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .info-contenido {
+    width: 85%;
+    gap: 1.8rem;
+  }
+
+  .info-btn {
+    padding: 0.7rem 1.5rem;
+    max-width: 200px;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+  }
+
+  .blue-bands {
+    padding: 2rem 0;
+    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  }
+}
+
+
+
 
 /* ======= Responsive ======= */
 @media (max-width: 900px) {
