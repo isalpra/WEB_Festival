@@ -570,13 +570,15 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 5rem;
   margin-top: 20%;
   margin-bottom: 40%;
 }
 
 .info-btn {
-  display: inline-block;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
   background-color: var(--red);
   color: white;
   font-family: 'Moderniz', sans-serif;
@@ -586,6 +588,7 @@ html, body {
   border-radius: 35px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   font-size: clamp(1rem, 2vw, 1.3rem);
+  text-align: center;
 }
 
 .info-btn:hover {
@@ -636,21 +639,9 @@ html, body {
 }
 
 
-/* ===========================
-   BLOQUES EN DOS COLUMNAS
-   =========================== */
-
-/* ===========================
-   BLOQUES EN DOS COLUMNAS (CORREGIDO)
-   =========================== */
-
-/* ===========================
-   BLOQUES EN DOS COLUMNAS (CORREGIDO Y CENTRADO)
-   =========================== */
-
 .two-col {
   display: flex;
-  align-items: center; /* 🔹 centra verticalmente el texto con la imagen */
+  align-items: center; 
   justify-content: space-between;
   gap: 3rem;
   flex-wrap: wrap;
@@ -658,7 +649,6 @@ html, body {
 
 .two-col img {
   width: 48%;
-  height: auto;
   max-height: 300px;
   border-radius: 12px;
   object-fit: cover;
@@ -669,17 +659,15 @@ html, body {
   width: 48%;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 🔹 centra el texto internamente */
+  justify-content: center; 
 }
 
-/* Invertir posición (imagen izquierda, texto derecha) */
+
 .two-col.reverse {
   flex-direction: row;
 }
 
-/* ===========================
-   RESPONSIVE
-   =========================== */
+
 @media (max-width: 900px) {
   .two-col,
   .two-col.reverse {
@@ -725,6 +713,107 @@ html, body {
 .chill.zone {
   height:10rem;
 }
+
+/* TRANSPORTS */
+
+.transport-section {
+  padding: 10rem 10vw;
+}
+
+
+
+/* --- Parte superior: mapa + texto --- */
+.transport-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+/* Imagen del mapa */
+.map-box {
+  flex: 1;
+  min-width: 300px;
+}
+
+.map-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Caja de texto con borde */
+.info-box {
+  flex: 1;
+  min-width: 300px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+
+/* --- Parte inferior: tres tarjetas con borde --- */
+.transport-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.transport-card {
+  flex: 1;
+  min-width: 280px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 900px) {
+  .transport-top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .map-box,
+  .info-box {
+    width: 100%;
+  }
+
+  .transport-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .transport-card {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ===========================
    RESPONSIVE
    =========================== */
