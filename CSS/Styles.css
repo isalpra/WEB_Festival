@@ -399,7 +399,7 @@ html, body {
   background-color: var(--blue);
   color: var(--white);
   text-align: center;
-  padding: 4rem 0;
+  padding: 3rem 0;
   font-size: 1rem;
   margin-top: 5rem;
 }
@@ -602,6 +602,11 @@ html, body {
   background-color: #df3c3c;
   transform: scale(1.02);
 }
+
+
+
+
+
 
 /* ================== RESPONSIVE ================== */
 @media (max-width: 900px) {
