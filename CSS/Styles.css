@@ -721,13 +721,18 @@ html, body {
 }
 
 
+.info-box h2 {
+  color:#0C27B1;
+  margin-bottom: 1rem;
+}
+
 
 /* --- Parte superior: mapa + texto --- */
 .transport-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 5rem;
   flex-wrap: wrap;
   margin-bottom: 4rem;
 }
@@ -739,7 +744,7 @@ html, body {
 }
 
 .map-box img {
-  width: 100%;
+  width: 80%;
   height: auto;
   display: block;
   border-radius: 10px;
@@ -763,7 +768,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  gap: 2rem;
+  gap: 4rem;
   flex-wrap: wrap;
 }
 
@@ -776,8 +781,13 @@ html, body {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: left;
+}
+
+.transport-card h3 {
+  color: var(--blue);        
+  text-align: center;       
+  margin-bottom: 1rem;     
 }
 
 /* --- Responsivo --- */
@@ -801,16 +811,6 @@ html, body {
     width: 100%;
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
