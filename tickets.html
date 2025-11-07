@@ -19,18 +19,24 @@
 </head>
 <body>
 <header class="navbar">
-    <div class="logo"> 
-      <img src="IMG/TheComebacklogo.png" alt="The Comeback Logo">
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="tickets.html">TICKETS</a></li>
-        <li><a href="bands.html">BANDS</a></li>
-        <li><a href="info.html">INFO</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="logo"> 
+    <img src="IMG/TheComebacklogo.png" alt="The Comeback Logo">
+  </div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="tickets.html">TICKETS</a></li>
+      <li><a href="bands.html">BANDS</a></li>
+      <li><a href="info.html">INFO</a></li>
+    </ul>
+  </nav>
+
+  <!-- Icono hamburguesa -->
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+</header>
 
 <section class="info-section">
   <div class="blue-bands">
@@ -54,9 +60,9 @@
 
         <div class="ticket-center">
           <div class="controls">
-            <button class="ctrl-btn" onclick="updateTickets('normal', -1)">−</button>
+            <button class="ctrl-btn" >−</button>
             <div id="normal-count" class="count">0</div>
-            <button class="ctrl-btn" onclick="updateTickets('normal', 1)">+</button>
+            <button class="ctrl-btn">+</button>
           </div>
         </div>
 
@@ -74,9 +80,9 @@
 
         <div class="ticket-center">
           <div class="controls">
-            <button class="ctrl-btn" onclick="updateTickets('silver', -1)">−</button>
+            <button class="ctrl-btn">−</button>
             <div id="silver-count" class="count">0</div>
-            <button class="ctrl-btn" onclick="updateTickets('silver', 1)">+</button>
+            <button class="ctrl-btn">+</button>
           </div>
         </div>
 
@@ -94,9 +100,9 @@
 
         <div class="ticket-center">
           <div class="controls">
-            <button class="ctrl-btn" onclick="updateTickets('minor', -1)">−</button>
+            <button class="ctrl-btn">−</button>
             <div id="minor-count" class="count">0</div>
-            <button class="ctrl-btn" onclick="updateTickets('minor', 1)">+</button>
+            <button class="ctrl-btn">+</button>
           </div>
         </div>
 

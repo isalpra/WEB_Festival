@@ -1,140 +1,99 @@
 // tickets.js
 // FUNCIONALIDAD DE BOTONES Y TOTAL DINÁMICO
 
+// ==== CONFIGURACIÓN ====
 const prices = {
   normal: 140,
   silver: 215,
   minor: 95
 };
 
-// Cantidades iniciales (coinciden con los valores que quieres por defecto)
 const counts = {
   normal: 0,
   silver: 0,
   minor: 0
 };
 
-// Formateo sencillo de moneda (puedes ajustar separación de miles si quieres)
-function formatCurrency(n){
-  return n + '€';
+// ==== FUNCIONES ====
+
+// Formatea el total como moneda
+function formatCurrency(value) {
+  return value.toLocaleString('es-ES', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 0
+  });
 }
 
-// Actualiza el contador visible para un tipo
-function updateDisplayCount(type){
+// Actualiza el número mostrado de entradas
+function updateDisplayCount(type) {
   const el = document.getElementById(`${type}-count`);
-  if(el) el.textContent = counts[type] ?? 0;
+  if (el) {
+    el.textContent = counts[type] ?? 0;
+
+    // efecto visual al cambiar
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 200);
+  }
 }
 
-// Recalcula y escribe el total (y aplica animación breve)
-function updateTotal(){
+// Recalcula el total y lo actualiza en pantalla
+function updateTotal() {
   const totalVal =
-    (counts.normal || 0) * prices.normal +
-    (counts.silver || 0) * prices.silver +
-    (counts.minor || 0) * prices.minor;
+    (counts.normal * prices.normal) +
+    (counts.silver * prices.silver) +
+    (counts.minor * prices.minor);
 
   const totalEl = document.getElementById('total');
-  if(!totalEl) return;
+  if (!totalEl) return;
 
   totalEl.textContent = formatCurrency(totalVal);
 
-  // efecto visual en el contenedor
-  const parent = totalEl.parentElement;
-  if(parent){
-    parent.classList.add('updated');
-    window.setTimeout(()=> parent.classList.remove('updated'), 200);
-  }
+  // Animación suave al actualizar el total
+  totalEl.parentElement.classList.add('updated');
+  setTimeout(() => totalEl.parentElement.classList.remove('updated'), 250);
 }
 
-// Actualiza counts (evita negativos) y refresca UI
-function safeUpdateCountsAndUI(type, change){
-  if(!(type in counts)){
-    console.warn('Tipo desconocido:', type);
+// Actualiza el contador sin permitir números negativos
+function safeUpdateCountsAndUI(type, change) {
+  if (!(type in counts)) {
+    console.warn('Tipo de ticket desconocido:', type);
     return;
   }
-  counts[type] = Math.max(0, Number(counts[type]) + Number(change));
+
+  counts[type] = Math.max(0, counts[type] + change);
   updateDisplayCount(type);
   updateTotal();
 }
 
-// Función expuesta para compatibilidad con onclick inline
-function updateTickets(type, change){
-  safeUpdateCountsAndUI(type, change);
+// Función principal llamada desde los botones
+function updateTickets(type, change) {
+  // Asegurar que el cambio siempre sea de ±1
+  const realChange = change > 0 ? 1 : -1;
+  safeUpdateCountsAndUI(type, realChange);
 }
 
-// Hacer global (por si tu HTML usa onclick="updateTickets(...)")
 window.updateTickets = updateTickets;
 
-// Inicializa contadores visibles y engancha listeners a botones (por si usas data-attrs)
-document.addEventListener('DOMContentLoaded', function(){
-  // inicializa mostradores
+// ==== INICIALIZACIÓN ====
+document.addEventListener('DOMContentLoaded', () => {
   Object.keys(counts).forEach(updateDisplayCount);
   updateTotal();
 
-  // Adicional: detectar botones con data-type/data-change — útil si quieres migrar
+  // Asegura que todos los botones funcionen incluso si no tienen onclick (por compatibilidad futura)
   document.querySelectorAll('.ctrl-btn').forEach(btn => {
-    // si el botón ya tiene onclick inline, lo dejaremos — pero añadimos listener por compatibilidad
-    btn.addEventListener('click', (e) => {
-      // intentar leer dataset (si lo cambias en el futuro)
-      const dt = btn.dataset.type;
-      const dc = btn.dataset.change;
-      if(dt && dc){
-        safeUpdateCountsAndUI(dt, Number(dc));
-        return;
-      }
-
-      // si no hay dataset, extraer del onclick si existe (compat.)
-      const onclick = btn.getAttribute('onclick') || '';
-      const m = onclick.match(/updateTickets\(\s*['"]?([a-zA-Z0-9_-]+)['"]?\s*,\s*([-]?\d+)\s*\)/);
-      if(m){
-        safeUpdateCountsAndUI(m[1], Number(m[2]));
-        return;
-      }
-
-      // fallback: parsear texto +/-
-      const txt = (btn.textContent || btn.innerText || '').trim();
-      let change = NaN;
-      if(txt === '+' || txt === '＋') change = 1;
-      if(txt === '-' || txt === '−' || txt === '—') change = -1;
-      // si no se detecta tipo, buscar el ancestor ticket y su data-type
+    btn.addEventListener('click', () => {
       const ticket = btn.closest('.ticket');
-      const type = ticket ? ticket.dataset.type : null;
-      if(type && !Number.isNaN(change)){
-        safeUpdateCountsAndUI(type, change);
-      } else {
-        // no se pudo interpretar; no hacemos nada
-        console.warn('Botón ctrl-btn no interpretable', btn);
-      }
+      const type = ticket?.dataset.type;
+      if (!type) return;
+
+      const txt = btn.textContent.trim();
+      const change = txt === '+' ? 1 : txt === '−' || txt === '-' ? -1 : 0;
+      if (change !== 0) updateTickets(type, change);
     });
   });
 });
 
-
-
-
-// Seleccionamos elementos
-const modal = document.getElementById("reminderModal");
-const closeBtn = document.querySelector(".close");
-const buttons = document.querySelectorAll(".extra-btn");
-
-// Al hacer clic en los botones
-buttons.forEach(button => {
-  button.addEventListener("click", (e) => {
-    e.preventDefault();
-    modal.style.display = "flex";
-  });
-});
-
-// Al hacer clic en la X
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-// Al hacer clic fuera del modal
-window.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
-});
 
 
 
@@ -207,4 +166,16 @@ form.addEventListener("submit", (e) => {
 
 
 
+MENU 
 
+const menuToggle = document.querySelector('.menu-toggle i');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    // Cambiar el icono (hamburguesa <-> cruz)
+    menuToggle.classList.toggle('fa-bars');
+    menuToggle.classList.toggle('fa-xmark');
+  });
+
+  
