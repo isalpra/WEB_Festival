@@ -892,13 +892,15 @@ html, body {
 /* TICKETS  */
 
 
-.tickets-wrapper{
+.tickets-wrapper {
   max-width: 920px;
   margin: 70px auto; 
   padding: 28px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 50px; 
+  gap: 40px;
+}
+   
 
 /* Header */
 .tickets-header{
@@ -1090,7 +1092,7 @@ html, body {
 
 .form-container {
   background-color: #f1f1f1;
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 10px;
   padding: 3rem 3.5rem;
   width: 85%;
@@ -1098,16 +1100,6 @@ html, body {
   max-width: 720px;
   box-sizing: border-box;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.form-wrapper {
-  display: flex;
-  justify-content: center;   /* centra horizontalmente */
-  align-items: center;       /* centra verticalmente */
-  min-height: 100vh;         /* ocupa toda la altura de la pantalla */
-  background-color: #fff;    /* o el color de fondo que tengas */
-  box-sizing: border-box;
-  padding: 20px;             /* para que no se pegue en pantallas pequeñas */
 }
 
 /* Etiquetas */
