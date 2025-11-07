@@ -60,33 +60,35 @@ html, body {
 /* ENLACES HORIZONTALES */
 .navbar {
   width: 100%;
+  height: 80px; /* Altura fija */
   background-color: var(--black);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px; /* Altura fija */
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000; /* se mantiene arriba */
+  padding: 0; /* evita cambios de altura */
 }
 
-/* LOGO */
+/* ===== LOGO ===== */
 .logo img {
   height: 48px;
   position: absolute;
   left: 40px;
   top: 50%;
   transform: translateY(-50%);
+  transition: opacity 0.3s ease;
 }
 
-/* ENLACES HORIZONTALES */
+/* ===== MENÚ PRINCIPAL ===== */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 160px;
   justify-content: center;
   align-items: center;
+  gap: 160px;
   margin: 0;
   padding: 0;
   transition: all 0.3s ease;
@@ -98,73 +100,78 @@ html, body {
   font-family: "Medieval Scroll of Wisdom", cursive;
   font-size: 1.3rem;
   letter-spacing: 1px;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, font-size 0.3s ease, gap 0.3s ease;
 }
 
 .nav-links a:hover {
   color: var(--change);
 }
 
-/* ICONO HAMBURGUESA */
-/* ICONO HAMBURGUESA */
-.menu-toggle {
-  display: none;
-  position: absolute;
-  right: 30px;   
-  top: 50%;     
-  transform: translateY(-50%);
-  cursor: pointer;
-  z-index: 1200; 
-}
-
-.menu-toggle i {
-  font-size: 1.8rem;
-  color: var(--white);
-  pointer-events: none; /
-}
 /* ===== MEDIA QUERIES ===== */
+
+/* Ligeramente más pequeña */
 @media screen and (max-width: 1000px) {
   .nav-links {
     gap: 100px;
   }
-}
-
-@media screen and (max-width: 850px) {
-  .nav-links {
-    gap: 60px;
-  }
-}
-
-/* ===== VERSIÓN MÓVIL ===== */
-@media screen and (max-width: 700px) {
-  /* Menú oculto inicialmente */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: var(--black);
-    width: 100%;
-    position: absolute;
-    top: 80px; /* justo debajo de la barra fija */
-    left: 0;
-    padding: 1.2em 0;
-    gap: 1em;
-    z-index: 999; /* debajo del icono, encima del contenido */
-  }
-
-  /* Menú visible cuando se activa */
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Muestra el icono en móviles */
-  .menu-toggle {
-    display: block;
-  }
-
   .nav-links a {
     font-size: 1.2rem;
   }
 }
+
+/* Pantallas medianas */
+@media screen and (max-width: 850px) {
+  .nav-links {
+    gap: 70px;
+  }
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+}
+
+/* Pantallas pequeñas */
+@media screen and (max-width: 700px) {
+  .nav-links {
+    gap: 45px;
+  }
+  .nav-links a {
+    font-size: 1rem;
+  }
+}
+
+/* Móviles pequeños */
+@media screen and (max-width: 500px) {
+  .nav-links {
+    gap: 25px;
+  }
+  .nav-links a {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* 👇 OCULTAR LOGO EN MÓVILES */
+  .logo img {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Muy pequeños (modo apaisado o móviles viejos) */
+@media screen and (max-width: 400px) {
+  .nav-links {
+    gap: 15px;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  /* sigue oculto */
+  .logo img {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
 /* ===============================
    TICKER (BARRA AZUL)
 ================================== */
@@ -1186,43 +1193,41 @@ html, body {
 
 .form-wrapper {
   display: flex;
-  justify-content: center;  
-  align-items: center;    
-  min-height: 100vh; 
-  flex-direction: column;  
-  gap: 4rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 
-
 .form-header {
-   text-align: center;
-   font-size: 0.85rem;
-    font-weight: 700;
-    margin: 0;
-    padding: 0;
-    margin-left:15% ;
-    margin-right:15% ;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 10% 1rem;
+  line-height: 1.5;
 }
 
 .form-header a {
-  font-family:"Medieval Scroll of Wisdom", cursive;
+  font-family: "Medieval Scroll of Wisdom", cursive;
   color: #0015c6;
 }
-  
 
+/* FORMULARIO */
 .form-container {
   background-color: #f1f1f1;
   border: 1px solid #000;
   border-radius: 10px;
-  padding: 3rem 3.5rem;
+  padding: 3rem;
   width: 85%;
-  align-items: center;
   max-width: 720px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Etiquetas */
+/* ETIQUETAS */
 label {
   display: block;
   font-weight: bold;
@@ -1231,7 +1236,7 @@ label {
   color: #000;
 }
 
-/* Campos */
+/* CAMPOS */
 input,
 textarea {
   width: 100%;
@@ -1243,35 +1248,14 @@ textarea {
   box-sizing: border-box;
 }
 
-
-
 textarea {
   resize: vertical;
   min-height: 90px;
 }
 
-/* Contraseña + ojo */
-.password-container {
-  position: relative;
-}
-
-.toggle-password {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Botón SEND */
+/* BOTÓN */
 .send-btn {
   display: block;
-  transition: background-color 0.3s 
-  ease, transform 0.2s ease;
   background-color: #000;
   color: #fff;
   border: none;
@@ -1283,6 +1267,7 @@ textarea {
   font-size: 1.1rem;
   margin: 2rem auto 0;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .send-btn:hover {
@@ -1290,15 +1275,14 @@ textarea {
   transform: scale(1.05);
 }
 
-/* Errores */
+/* ERRORES Y MENSAJE */
 .error {
   color: red;
-  font-size: 0.9rem;
-  height: 1.2rem;
-  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  height: 1rem;
+  margin-top: 0.2rem;
 }
 
-/* Mensaje de éxito */
 .success-message {
   text-align: center;
   color: green;
@@ -1306,23 +1290,60 @@ textarea {
   margin-top: 1rem;
 }
 
-/* Responsive */
+/* ======= RESPONSIVE ======= */
+
+/* Tablets */
 @media (max-width: 900px) {
   .form-container {
     width: 90%;
     padding: 2.5rem;
   }
+  .form-header {
+    font-size: 0.85rem;
+    margin: 0 8% 1rem;
+  }
 }
 
+/* Móviles */
 @media (max-width: 600px) {
   .form-container {
     width: 95%;
     padding: 2rem;
   }
-
+  .form-header {
+    font-size: 0.8rem;
+    margin: 0 5% 2rem;
+  }
+  input,
+  textarea {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  label {
+    font-size: 0.9rem;
+  }
   .send-btn {
     width: 100%;
     font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 400px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+  .form-header {
+    font-size: 0.75rem;
+  }
+  input,
+  textarea {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+  .send-btn {
+    font-size: 0.9rem;
   }
 }
 
@@ -1856,8 +1877,9 @@ textarea {
   align-items: center;
 }
 
-.menu .menu-toggle {
-  display: none; /* oculto en pantallas grandes */
+.menu-toggle i {
+  font-size: 1.8rem;
+  color: var(--white);
 }
 
 /* Mobile */

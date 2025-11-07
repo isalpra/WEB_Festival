@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
   Object.keys(counts).forEach(updateDisplayCount);
   updateTotal();
 
-  // Asegura que todos los botones funcionen incluso si no tienen onclick (por compatibilidad futura)
   document.querySelectorAll('.ctrl-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const ticket = btn.closest('.ticket');
@@ -100,85 +99,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // FORMULARIO 
 
-const form = document.getElementById("contactForm");
-const nameInput = document.getElementById("name");
-const surnameInput = document.getElementById("surname");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const togglePassword = document.getElementById("togglePassword");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const inputs = {
+    name: document.getElementById("name"),
+    surname: document.getElementById("surname"),
+    email: document.getElementById("email"),
+    password: document.getElementById("password"),
+  };
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let valid = true;
 
-  let valid = true;
+    // Nombre
+    if (inputs.name.value.trim() === "") {
+      showError("nameError", "Please enter your name.");
+      valid = false;
+    } else clearError("nameError");
 
-  // Validar nombre
-  if (nameInput.value.trim() === "") {
-    document.getElementById("nameError").textContent = "Please enter your name.";
-    valid = false;
-  } else {
-    document.getElementById("nameError").textContent = "";
+    // Apellido
+    if (inputs.surname.value.trim() === "") {
+      showError("surnameError", "Please enter your surname.");
+      valid = false;
+    } else clearError("surnameError");
+
+    // Email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputs.email.value)) {
+      showError("emailError", "Please enter a valid email.");
+      valid = false;
+    } else clearError("emailError");
+
+    // Contraseña
+    if (inputs.password.value.trim().length < 6) {
+      showError("passwordError", "Password must be at least 6 characters.");
+      valid = false;
+    } else clearError("passwordError");
+
+    if (valid) {
+      document.getElementById("successMessage").textContent =
+        "✅ Form successfully submitted!";
+      form.reset();
+    } else {
+      document.getElementById("successMessage").textContent = "";
+    }
+  });
+
+  function showError(id, message) {
+    document.getElementById(id).textContent = message;
   }
 
-  // Validar apellido
-  if (surnameInput.value.trim() === "") {
-    document.getElementById("surnameError").textContent = "Please enter your surname.";
-    valid = false;
-  } else {
-    document.getElementById("surnameError").textContent = "";
-  }
-
-  // Validar email
-  if (!emailInput.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-    document.getElementById("emailError").textContent = "Please enter a valid email.";
-    valid = false;
-  } else {
-    document.getElementById("emailError").textContent = "";
-  }
-
-  // Validar contraseña
-  if (passwordInput.value.trim().length < 6) {
-    document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
-    valid = false;
-  } else {
-    document.getElementById("passwordError").textContent = "";
-  }
-
-  // Si todo está correcto
-  if (valid) {
-    alert("✅ Form successfully submitted!");
-    form.reset();
+  function clearError(id) {
+    document.getElementById(id).textContent = "";
   }
 });
 
 
 
-
-
-
-
-
 // MENU 
 
-  document.addEventListener("DOMContentLoaded", function() {
-    const toggle = document.querySelector(".menu-toggle i");
-    const navLinks = document.querySelector(".nav-links");
-
-    toggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks   = document.querySelector(".nav-links");
+  const icon       = menuToggle.querySelector("i");
 
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+  // Estado inicial accesible
+  menuToggle.setAttribute("role", "button");
+  menuToggle.setAttribute("aria-label", "Abrir menú");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.tabIndex = 0;
 
-      // alterna el icono de barras ↔ X
-      const icon = menuToggle.querySelector("i");
-      icon.classList.toggle("fa-bars");
-      icon.classList.toggle("fa-xmark");
-    });
-  });
+  function toggleMenu() {
+    const isOpen = navLinks.classList.toggle("active");
+    // Alterna icono barras ↔ X
+    icon.classList.toggle("fa-bars", !isOpen);
+    icon.classList.toggle("fa-xmark", isOpen);
+    // Accesibilidad
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+  }
+
+  // Click o Enter/Espacio
+  menuToggle.addEventListener("click", toggleMenu);
+  menuToggle.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleMenu(); }
+  });
+});
