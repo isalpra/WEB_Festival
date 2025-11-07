@@ -779,6 +779,32 @@ html, body {
   transform: scale(1.02);
 }
 
+@media (max-width: 700px) {
+  .info-contenido {
+    gap: 2rem; /* menos espacio entre botones */
+    margin-top: 15%; /* ajusta el margen superior */
+    margin-bottom: 20%; /* ajusta el margen inferior */
+  }
+
+  .info-btn {
+    padding: 0.8rem 2rem; /* botones más pequeños */
+    font-size: 1rem;      /* texto más pequeño */
+  }
+}
+
+@media (max-width: 500px) {
+  .info-contenido {
+    gap: 1.5rem;
+    margin-top: 10%;
+    margin-bottom: 15%;
+  }
+
+  .info-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
 /* ===========================
    SECCIÓN INFO PRINCIPAL
    =========================== */
