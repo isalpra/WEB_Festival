@@ -168,14 +168,16 @@ form.addEventListener("submit", (e) => {
 
 MENU 
 
-const menuToggle = document.querySelector('.menu-toggle i');
-  const navLinks = document.querySelector('.nav-links');
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    // Cambiar el icono (hamburguesa <-> cruz)
-    menuToggle.classList.toggle('fa-bars');
-    menuToggle.classList.toggle('fa-xmark');
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+
+      // alterna el icono de barras ↔ X
+      const icon = menuToggle.querySelector("i");
+      icon.classList.toggle("fa-bars");
+      icon.classList.toggle("fa-xmark");
+    });
   });
-
-  
