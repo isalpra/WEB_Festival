@@ -1090,6 +1090,29 @@ html, body {
 
 /* FORMULARIO  */
 
+.form-wrapper {
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: center;       /* centra verticalmente */
+  min-height: 100vh; 
+  flex-direction: column;        /* ocupa toda la altura visible */
+}
+
+
+.form-header {
+    text-align: center;
+   font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.form-header a {
+  font-family:"Medieval Scroll of Wisdom", cursive;
+  color: #0015c6;
+}
+  
+
 .form-container {
   background-color: #f1f1f1;
   border: 1px solid #000;
