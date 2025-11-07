@@ -393,6 +393,13 @@ html, body {
   transition: all 0.2s ease;
 }
 
+.footer-logo {
+  width: 100%;
+  max-width: 185px;
+  height: auto;
+  display: block;
+}
+
 .contact a {
   font-family: "Medieval Scroll of Wisdom", cursive;
 }
