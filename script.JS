@@ -107,3 +107,31 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 });
+
+
+
+
+// Seleccionamos elementos
+const modal = document.getElementById("reminderModal");
+const closeBtn = document.querySelector(".close");
+const buttons = document.querySelectorAll(".extra-btn");
+
+// Al hacer clic en los botones
+buttons.forEach(button => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "flex";
+  });
+});
+
+// Al hacer clic en la X
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Al hacer clic fuera del modal
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});

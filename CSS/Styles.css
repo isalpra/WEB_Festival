@@ -1075,6 +1075,114 @@ html, body {
   transform: scale(1.05);
 }
 
+
+
+
+/* boton  VENTANA MODAL  */
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.7); 
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 3rem 4rem;
+  border-radius: 20px;
+  text-align: center;
+  width: 80%;
+  max-width: 650px; 
+  font-family: 'Moderniz', sans-serif;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  font-size: 0.8rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.modal-content a {
+  color: #0015c6;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close:hover {
+  color: #ff3b3b;
+}
+
+/* Animación  */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 900px) {
+  .modal-content {
+    width: 90%;
+    max-width: 500px;
+    padding: 2.5rem 3rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .modal-content p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+    max-width: 400px;
+    padding: 2rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .modal-content p {
+    font-size: 0.7rem;
+  }
+
+  .close {
+    top: 8px;
+    right: 10px;
+    font-size: 1.3rem;
+  }
+}
+
 /* RESPONSIVE */
 @media (max-width: 720px){
   .ticket{
