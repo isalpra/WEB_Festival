@@ -58,6 +58,29 @@ html, body {
 }
 
 /* ENLACES HORIZONTALES */
+.navbar {
+  width: 100%;
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; /* Altura fija */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* se mantiene arriba */
+}
+
+/* LOGO */
+.logo img {
+  height: 48px;
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ENLACES HORIZONTALES */
 .nav-links {
   list-style: none;
   display: flex;
@@ -82,19 +105,23 @@ html, body {
   color: var(--change);
 }
 
-/* ICONO HAMBURGUESA (OCULTO EN PANTALLAS GRANDES) */
+/* ICONO HAMBURGUESA */
+/* ICONO HAMBURGUESA */
 .menu-toggle {
   display: none;
   position: absolute;
-  right: 40px;
+  right: 30px;   
+  top: 50%;     
+  transform: translateY(-50%);
   cursor: pointer;
+  z-index: 1200; 
 }
 
 .menu-toggle i {
   font-size: 1.8rem;
   color: var(--white);
+  pointer-events: none; /
 }
-
 /* ===== MEDIA QUERIES ===== */
 @media screen and (max-width: 1000px) {
   .nav-links {
@@ -108,24 +135,28 @@ html, body {
   }
 }
 
+/* ===== VERSIÓN MÓVIL ===== */
 @media screen and (max-width: 700px) {
-  /* Oculta los enlaces y muestra el icono */
+  /* Menú oculto inicialmente */
   .nav-links {
     display: none;
     flex-direction: column;
     background-color: var(--black);
     width: 100%;
     position: absolute;
-    top: 100%;
+    top: 80px; /* justo debajo de la barra fija */
     left: 0;
-    padding: 1em 0;
+    padding: 1.2em 0;
     gap: 1em;
+    z-index: 999; /* debajo del icono, encima del contenido */
   }
 
+  /* Menú visible cuando se activa */
   .nav-links.active {
     display: flex;
   }
 
+  /* Muestra el icono en móviles */
   .menu-toggle {
     display: block;
   }
@@ -134,7 +165,6 @@ html, body {
     font-size: 1.2rem;
   }
 }
-
 /* ===============================
    TICKER (BARRA AZUL)
 ================================== */
