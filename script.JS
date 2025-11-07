@@ -94,7 +94,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// Seleccionamos la modal y la "x"
+const modal = document.getElementById("reminderModal");
+const closeBtn = modal.querySelector(".close");
 
+// Seleccionamos todos los botones que deben abrir la modal
+const extraBtns = document.querySelectorAll(".extra-btn");
+
+// Abrir modal al hacer clic en cualquier botón
+extraBtns.forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault(); // evita que el enlace haga scroll o cambie de página
+    modal.style.display = "flex"; // mostramos la modal
+  });
+});
+
+// Cerrar modal al pulsar la "x"
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Cerrar modal al hacer clic fuera del contenido
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
 
 
 // FORMULARIO 

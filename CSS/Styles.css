@@ -207,9 +207,10 @@ html, body {
 /* ===============================
    HERO SECTION
 ================================== */
+/* ================= HERO ================= */
 .hero {
   width: 100%;
-  height: 100vh; 
+  height: 100vh;
   overflow: hidden;
   position: relative;
   margin-top: 149px; 
@@ -226,20 +227,7 @@ html, body {
   transform: scale(1.03);
 }
 
-/* ===============================
-   INFO BACK SECTION (responsive)
-================================== */
-.infoback {
-  width: 100%;
-  background-color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; 
-  padding: 10vh 8vw; 
-  min-height: 90vh; 
-  box-sizing: border-box;
-}
-
+/* ================= INFO SECTION ================= */
 .white-block {
   background-color: var(--white);
   color: var(--black);
@@ -249,14 +237,15 @@ html, body {
 
 .white-block h1 {
   font-family: "Moderniz", sans-serif;
-  font-size: clamp(2.5rem, 10vw, 9rem); 
+  font-size: clamp(2.5rem, 10vw, 9rem);
   line-height: 1;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin: 10vh 0; 
+  margin: 10vh 0;
   margin-left: 5%;
 }
 
+/* ================= LUGAR ================= */
 .lugar {
   background-color: var(--black);
   color: var(--white);
@@ -273,18 +262,16 @@ html, body {
   font-family: "Medieval Scroll of Wisdom", cursive;
   font-size: clamp(2.3rem, 8vw, 6rem);
   color: #0C27B1;
-  letter-spacing: clamp(1px, 0.5vw, 4px); 
+  letter-spacing: clamp(1px, 0.5vw, 4px);
   margin-bottom: 3vh;
   text-align: center;
   width: 100%;
   line-height: 1.1;
 }
 
-
 .lugar > div {
   width: 100%;
 }
-
 
 .left, .right {
   display: flex;
@@ -317,6 +304,7 @@ html, body {
   opacity: 0.9;
 }
 
+/* ================= BRICKWALL ================= */
 .brickwall {
   position: relative;
   display: flex;
@@ -334,14 +322,14 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 🔹 asegura que cubra todo el espacio del texto */
-  filter: brightness(40%); /* 🔹 oscurece la imagen para mejor legibilidad */
+  object-fit: cover;
+  filter: brightness(40%);
   z-index: 0;
 }
 
 .brickwall-text {
   position: relative;
-  z-index: 1; /* 🔹 texto por encima de la imagen */
+  z-index: 1;
   max-width: 1000px;
   font-size: clamp(1rem, 1.8vw, 1.15rem);
   font-family: "Moderniz", sans-serif;
@@ -353,6 +341,89 @@ html, body {
   margin-bottom: 4rem;
 }
 
+/* ================= MEDIA QUERIES ================= */
+
+/* Tablets grandes */
+@media (max-width: 1024px) {
+  .hero {
+    height: 80vh;
+  }
+  .brickwall {
+    padding: 12vh 8vw;
+  }
+  .lugar {
+    padding: 6vh 6%;
+  }
+}
+
+/* Tablets / móviles grandes */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+  }
+  .white-block h1 {
+    font-size: clamp(2rem, 12vw, 6rem);
+    margin-left: 3%;
+  }
+  .lugar h2 {
+    font-size: clamp(1.8rem, 10vw, 4.5rem);
+  }
+  .lugar .left, .lugar .right {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  .brickwall-text {
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  }
+}
+
+/* Móviles medianos */
+@media (max-width: 600px) {
+  .hero {
+    height: 60vh;
+  }
+  .white-block h1 {
+    font-size: clamp(1.8rem, 14vw, 4rem);
+    margin-left: 2%;
+  }
+  .lugar h2 {
+    font-size: clamp(1.5rem, 12vw, 3.5rem);
+  }
+  .lugar {
+    padding: 4vh 5%;
+    gap: 2vh;
+  }
+  .utretch {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+  }
+  .brickwall {
+    padding: 10vh 5%;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero {
+    height: 50vh;
+  }
+
+  /* Solo se reduce el h2 de lugar */
+  .lugar h2 {
+    font-size: clamp(0.7rem, 9vw, 1rem);
+  }
+
+  /* Se reduce brickwall-text */
+  .brickwall-text {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .brickwall-text p {
+    margin-bottom: 1rem;
+  }
+}
+
+/* FOOTER  */
 
 .blue-footer {
   background-color: #0C27B1;
@@ -1206,7 +1277,7 @@ html, body {
   text-align: center;
   font-size: 0.9rem;
   font-weight: 700;
-  margin: 0 10% 1rem;
+  margin: 0 10% 2.5rem;
   line-height: 1.5;
 }
 
