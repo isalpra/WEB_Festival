@@ -1092,19 +1092,22 @@ html, body {
 
 .form-wrapper {
   display: flex;
-  justify-content: center;   /* centra horizontalmente */
-  align-items: center;       /* centra verticalmente */
+  justify-content: center;  
+  align-items: center;    
   min-height: 100vh; 
-  flex-direction: column;        /* ocupa toda la altura visible */
+  flex-direction: column;  
+  gap: 4rem;
 }
 
 
 .form-header {
-    text-align: center;
+   text-align: center;
    font-size: 0.85rem;
     font-weight: 700;
     margin: 0;
     padding: 0;
+    margin-left:15% ;
+    margin-right:15% ;
 }
 
 .form-header a {
