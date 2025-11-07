@@ -175,9 +175,9 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   position: fixed; 
-  top: 84px; 
+  top: 77px; 
   left: 0;
-  height: 65px;
+  height: 75px;
   display: flex;
   align-items: center;
   z-index: 999;

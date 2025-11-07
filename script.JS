@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-FORMULARIO 
+// FORMULARIO 
 
 const form = document.getElementById("contactForm");
 const nameInput = document.getElementById("name");
@@ -155,6 +155,11 @@ form.addEventListener("submit", (e) => {
 
 
 
+
+
+
+// MENU 
+
   document.addEventListener("DOMContentLoaded", function() {
     const toggle = document.querySelector(".menu-toggle i");
     const navLinks = document.querySelector(".nav-links");
@@ -163,10 +168,6 @@ form.addEventListener("submit", (e) => {
       navLinks.classList.toggle("active");
     });
   });
-
-
-
-MENU 
 
 document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.getElementById("menu-toggle");
