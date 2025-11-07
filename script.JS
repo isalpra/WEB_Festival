@@ -135,3 +135,71 @@ window.addEventListener("click", (e) => {
     modal.style.display = "none";
   }
 });
+
+
+
+
+FORMULARIO 
+
+const form = document.getElementById("contactForm");
+const nameInput = document.getElementById("name");
+const surnameInput = document.getElementById("surname");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let valid = true;
+
+  // Validar nombre
+  if (nameInput.value.trim() === "") {
+    document.getElementById("nameError").textContent = "Please enter your name.";
+    valid = false;
+  } else {
+    document.getElementById("nameError").textContent = "";
+  }
+
+  // Validar apellido
+  if (surnameInput.value.trim() === "") {
+    document.getElementById("surnameError").textContent = "Please enter your surname.";
+    valid = false;
+  } else {
+    document.getElementById("surnameError").textContent = "";
+  }
+
+  // Validar email
+  if (!emailInput.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    document.getElementById("emailError").textContent = "Please enter a valid email.";
+    valid = false;
+  } else {
+    document.getElementById("emailError").textContent = "";
+  }
+
+  // Validar contraseña
+  if (passwordInput.value.trim().length < 6) {
+    document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+    valid = false;
+  } else {
+    document.getElementById("passwordError").textContent = "";
+  }
+
+  // Si todo está correcto
+  if (valid) {
+    alert("✅ Form successfully submitted!");
+    form.reset();
+  }
+});
+
+// Mostrar / ocultar contraseña
+togglePassword.addEventListener("click", () => {
+  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+  passwordInput.setAttribute("type", type);
+  togglePassword.textContent = type === "password" ? "👁️" : "🙈";
+});
+
+
+
+
+

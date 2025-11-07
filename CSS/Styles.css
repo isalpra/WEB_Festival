@@ -894,12 +894,11 @@ html, body {
 
 .tickets-wrapper{
   max-width: 920px;
-  margin: 70px auto; /* sitúa debajo de tu navbar fija */
+  margin: 70px auto; 
   padding: 28px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px; /* Aumentado: más espacio entre secciones */
-}
+  gap: 50px; 
 
 /* Header */
 .tickets-header{
@@ -1087,7 +1086,133 @@ html, body {
 }
 
 
+/* FORMULARIO  */
 
+.form-container {
+  background-color: #f1f1f1;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 3rem 3.5rem;
+  width: 85%;
+  align-items: center;
+  max-width: 720px;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: center;       /* centra verticalmente */
+  min-height: 100vh;         /* ocupa toda la altura de la pantalla */
+  background-color: #fff;    /* o el color de fondo que tengas */
+  box-sizing: border-box;
+  padding: 20px;             /* para que no se pegue en pantallas pequeñas */
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  margin-top: 1rem;
+  color: #000;
+}
+
+/* Campos */
+input,
+textarea {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid #000;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Contraseña + ojo */
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Botón SEND */
+.send-btn {
+  display: block;
+  transition: background-color 0.3s 
+  ease, transform 0.2s ease;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 28px;
+  padding: 0.9rem 3rem;
+  font-family: 'Moderniz', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  margin: 2rem auto 0;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  background-color: #000c3f;
+  transform: scale(1.05);
+}
+
+/* Errores */
+.error {
+  color: red;
+  font-size: 0.9rem;
+  height: 1.2rem;
+  margin-top: 0.3rem;
+}
+
+/* Mensaje de éxito */
+.success-message {
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .form-container {
+    width: 90%;
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    width: 95%;
+    padding: 2rem;
+  }
+
+  .send-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
 
 /* boton  VENTANA MODAL  */
 
