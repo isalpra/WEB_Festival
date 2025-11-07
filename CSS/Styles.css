@@ -393,6 +393,10 @@ html, body {
   transition: all 0.2s ease;
 }
 
+.contact a {
+  font-family: "Medieval Scroll of Wisdom", cursive;
+}
+
 /* BANDS  */
 
 .blue-bands {
@@ -1137,6 +1141,11 @@ html, body {
 
 .close:hover {
   color: #ff3b3b;
+}
+
+.tickets-header a {
+  font-family:"Medieval Scroll of Wisdom", cursive;
+  color: #0015c6;
 }
 
 /* Animación  */
