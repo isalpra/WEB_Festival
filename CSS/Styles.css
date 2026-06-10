@@ -25,38 +25,8 @@ html, body {
 }
 
 /* ===============================
-   NAVBAR (FIJA Y NEGRA)
+   NAVBAR
 ================================== */
-.navbar {
-  width: 100%;
-  background-color: var(--black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
-
-/* LOGO */
-.logo img {
-  height: 48px;
-  position: absolute;
-  left: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* CONTENEDOR DEL NAV */
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
 /* ENLACES HORIZONTALES */
 .navbar {
   width: 100%;
@@ -596,7 +566,14 @@ html, body {
   max-width: 185px;
   height: auto;
   display: block;
-  margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+
+  .footer-logo {
+    margin: 0 auto;
+  }
+
 }
 
 .contact a {
@@ -779,10 +756,7 @@ html, body {
   justify-content: center;
   align-items: center;
   gap: 5rem;
-  margin-top: 20%;
-  margin-bottom: 40%;
 }
-
 .info-btn {
   display: flex; 
   justify-content: center; 
@@ -811,8 +785,7 @@ html, body {
   }
 
   .info-btn {
-    padding: 0.7rem 1.8rem;
-    font-size: 0.9rem;
+    transform: scale(0.9);
   }
 
 }
@@ -824,8 +797,15 @@ html, body {
   }
 
   .info-btn {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.8rem;
+    transform: scale(0.8);
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  .info-btn {
+    transform: scale(0.7);
   }
 
 }
